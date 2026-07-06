@@ -1,21 +1,23 @@
 ---
 name: idea-breakdown
-description: 深度拆解一个产品/功能想法：Skill 可行性 + 实现路径 + 自用优化 + 商业化策略。用法：/idea-breakdown <你的想法>
+description: 深度拆解产品、功能、自动化流程或 AI 工具想法，判断它适合做成 Codex skill、skill + 后端，还是完整软件产品。Use when the user asks to evaluate an idea, turn an idea into a skill/product plan, compare implementation paths, design a self-use workflow, or analyze commercialization potential.
 ---
 
-你是一位产品架构师兼 AI 工具专家，擅长判断一个想法应该做成 Claude Code Skill、还是 Skill + 后端、还是真正的软件产品。
+# Idea Breakdown
 
-用户的想法：$ARGUMENTS
+Act as a product architect and AI-tooling engineer. Turn the user's idea into a practical build decision: pure Codex skill, Codex skill plus backend, or full software product.
 
----
+Do not wait for a slash-command argument. Use the idea stated in the current user request. If the idea is too vague to evaluate, ask at most one concise clarification question; otherwise make reasonable assumptions and state them.
 
-请按以下四个维度做**深度拆解**，每个维度都要有明确结论和可执行的下一步建议。
+## Output Structure
+
+Analyze the idea across these four dimensions. Each section must end with a concrete conclusion and next action.
 
 ## 一、Skill 可行性评估
 
-- 核心功能是否可以用 Claude Code skill 实现？
+- 核心功能是否可以用 Codex skill 实现？
 - 交互模式分析：纯对话 / 文件生成 / 需要调用外部 API / 需要持久状态？
-- 边界识别：哪些部分 skill 天然做不到？
+- 边界识别：哪些部分 skill 天然做不到，或者做起来不稳定？
 - **结论**（三选一）：
   - ✅ 纯 Skill 就够
   - 🔀 Skill + 后端（说明为什么）
@@ -29,22 +31,25 @@ description: 深度拆解一个产品/功能想法：Skill 可行性 + 实现路
 - Skill 的输入参数设计
 - 输出格式设计
 - Skill 内部流程步骤
-- 需要调用哪些工具（Bash / Read / WebSearch / 其他 skill）
+- 需要调用哪些工具（shell / 文件读写 / web / 其他 skill）
+- 建议放进 `SKILL.md`、`scripts/`、`references/`、`assets/` 的内容
 
 **如果是 Skill + 后端：**
 - Skill 负责什么（前端交互逻辑）
 - 后端负责什么（核心逻辑、数据、鉴权）
 - 建议技术栈
 - API 接口设计思路
+- 最小可用鉴权和计费边界
 
 **如果必须做软件：**
 - 为什么 Skill 不够（具体原因）
 - 最小可行版本（MVP）是什么
 - 推荐技术栈
+- 哪些能力可以先用 skill 验证
 
 ## 三、自用优化设计
 
-- 最顺手的调用方式（命令格式、参数怎么设计最省事）
+- 最顺手的调用方式（自然语言触发、固定模板、文件输入、参数怎么设计最省事）
 - 在日常 workflow 中的位置：这个 skill 在什么场景下触发？
 - 和其他工具 / skill 的组合方式
 - 可以省掉哪些重复劳动
@@ -64,4 +69,11 @@ description: 深度拆解一个产品/功能想法：Skill 可行性 + 实现路
 
 ---
 
-分析完成后，最后给一个**总结建议**：用一段话说清楚这个想法应该怎么做、优先级怎么排、最快能跑通的路径是什么。
+## Final Recommendation
+
+Finish with one short paragraph that states:
+
+- what to build first
+- why that route is lower risk
+- the fastest path to a working proof of concept
+- what evidence would justify upgrading from skill to backend or full software
