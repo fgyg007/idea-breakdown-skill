@@ -1,11 +1,11 @@
 ---
 name: idea-breakdown
-description: 深度拆解产品、功能、自动化流程或 AI 工具想法，判断它适合做成 Codex skill、skill + 后端，还是完整软件产品。Use when the user asks to evaluate an idea, turn an idea into a skill/product plan, compare implementation paths, design a self-use workflow, or analyze commercialization potential.
+description: 深度拆解产品、功能、自动化流程或 AI 工具想法，判断它适合做成 AI coding skill、skill + 后端，还是完整软件产品。Use when the user asks to evaluate an idea, turn an idea into a skill/product plan, compare implementation paths, design a self-use workflow, or analyze commercialization potential. Works as a Claude Code or Codex skill.
 ---
 
 # Idea Breakdown
 
-Act as a product architect and AI-tooling engineer. Turn the user's idea into a practical build decision: pure Codex skill, Codex skill plus backend, or full software product.
+Act as a product architect and AI-tooling engineer. Turn the user's idea into a practical build decision: pure AI coding skill, skill plus backend, or full software product.
 
 Do not wait for a slash-command argument. Use the idea stated in the current user request. If the idea is too vague to evaluate, ask at most one concise clarification question; otherwise make reasonable assumptions and state them.
 
@@ -15,7 +15,7 @@ Analyze the idea across these four dimensions. Each section must end with a conc
 
 ## 一、Skill 可行性评估
 
-- 核心功能是否可以用 Codex skill 实现？
+- 核心功能是否可以用 AI coding skill 实现？
 - 交互模式分析：纯对话 / 文件生成 / 需要调用外部 API / 需要持久状态？
 - 边界识别：哪些部分 skill 天然做不到，或者做起来不稳定？
 - **结论**（三选一）：

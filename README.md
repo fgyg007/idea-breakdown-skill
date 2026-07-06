@@ -1,8 +1,8 @@
 # 想法拆解器 / Idea Breakdown
 
-一个 **Codex Skill**：给它一个想法，它从四个维度帮你深度拆解——
+一个 **Claude Code / Codex 通用 Skill**：给它一个想法，它从四个维度帮你深度拆解——
 
-- 🧩 **Skill 可行性** — 这个想法能不能用 Codex Skill 实现？边界在哪？
+- 🧩 **Skill 可行性** — 这个想法能不能用 AI coding skill 实现？边界在哪？
 - 🛠️ **实现路径** — 纯 Skill / Skill + 后端 / 必须做软件，给出具体方案
 - 🙋 **自用优化** — 怎么用最顺手，workflow 怎么设计，能省掉哪些重复劳动
 - 💰 **商业化策略** — 护城河在哪，定价模式，防复制方案，目标用户画像
@@ -13,23 +13,31 @@
 
 ## 一、安装
 
-> 前提：你已经装好 Codex。
+> 前提：你已经装好 Claude Code 或 Codex。
 
-把仓库克隆到 Codex 的用户级 skills 目录：
+### Claude Code
+
+```bash
+git clone https://github.com/fgyg007/idea-breakdown-skill.git ~/.claude/skills/idea-breakdown
+```
+
+然后重启 Claude Code（或开个新会话），让它加载这个新 skill。
+
+### Codex
 
 ```bash
 git clone https://github.com/fgyg007/idea-breakdown-skill.git ~/.codex/skills/idea-breakdown
 ```
 
-> 注意：克隆目标目录必须叫 `idea-breakdown`（要和 skill 名一致）。
-
 然后重启 Codex（或开个新会话），让它加载这个新 skill。
+
+> 注意：克隆目标目录必须叫 `idea-breakdown`（要和 skill 名一致）。
 
 ---
 
 ## 二、怎么用
 
-装好后，可以直接用自然语言触发：
+装好后，可以直接用自然语言触发，也可以显式点名 skill。
 
 ```
 用 idea-breakdown 帮我分析：我想做一个帮用户管理待办事项的 Telegram Bot
@@ -39,11 +47,17 @@ git clone https://github.com/fgyg007/idea-breakdown-skill.git ~/.codex/skills/id
 用 $idea-breakdown 拆解这个想法：音视频脚本辅助工具，帮创作者规划拍摄内容
 ```
 
+Claude Code 里如果你习惯 slash-command 风格，也可以这样说：
+
+```
+/idea-breakdown 拼豆图纸生成器，把图片转成像素拼豆图案
+```
+
 ```
 这个拼豆图纸生成器适合做成 skill 还是软件？帮我深度拆解。
 ```
 
-Codex 会输出一份**结构化分析报告**，四个维度逐一拆解，最后附总结建议和下一步行动。
+Claude Code / Codex 会输出一份**结构化分析报告**，四个维度逐一拆解，最后附总结建议和下一步行动。
 
 ---
 
