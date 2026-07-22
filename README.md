@@ -1,27 +1,17 @@
 # 想法拆解器 / Idea Breakdown
 
-一个 **Claude Code / Codex 通用 Skill**：给它一个想法，它从四个维度帮你深度拆解——
+一个 Claude Code / Codex 通用 Skill，用产品、工程、设计和商业化视角把模糊想法转换成低风险的实现决策。
 
-- 🧩 **Skill 可行性** — 这个想法能不能用 AI coding skill 实现？边界在哪？
-- 🛠️ **实现路径** — 纯 Skill / Skill + 后端 / 必须做软件，给出具体方案
-- 🙋 **自用优化** — 怎么用最顺手，workflow 怎么设计，能省掉哪些重复劳动
-- 💰 **商业化策略** — 护城河在哪，定价模式，防复制方案，目标用户画像
+## 审查模式
 
-> 适合 AI 工具开发者、独立开发者，在"要不要做这个"和"怎么做"之间快速找到答案。
+- **Product**：目标用户、任务、痛点、范围、替代方案和验证证据。
+- **Engineering**：边界、数据流、依赖、安全、失败路径、测试和运营成本。
+- **Design**：入口、用户路径、信息层级、状态、可理解性、可访问性和移动端。
+- **Full**：运行三种审查，再给出纯 Skill、Skill + 后端或完整软件的结论。
 
----
+未指定模式时默认使用 Full。分析不等于授权实施。
 
-## 一、安装
-
-> 前提：你已经装好 Claude Code 或 Codex。
-
-### Claude Code
-
-```bash
-git clone https://github.com/fgyg007/idea-breakdown-skill.git ~/.claude/skills/idea-breakdown
-```
-
-然后重启 Claude Code（或开个新会话），让它加载这个新 skill。
+## 安装
 
 ### Codex
 
@@ -29,67 +19,51 @@ git clone https://github.com/fgyg007/idea-breakdown-skill.git ~/.claude/skills/i
 git clone https://github.com/fgyg007/idea-breakdown-skill.git ~/.codex/skills/idea-breakdown
 ```
 
-然后重启 Codex（或开个新会话），让它加载这个新 skill。
+### Claude Code
 
-> 注意：克隆目标目录必须叫 `idea-breakdown`（要和 skill 名一致）。
-
----
-
-## 二、怎么用
-
-装好后，可以直接用自然语言触发，也可以显式点名 skill。
-
-```
-用 idea-breakdown 帮我分析：我想做一个帮用户管理待办事项的 Telegram Bot
+```bash
+git clone https://github.com/fgyg007/idea-breakdown-skill.git ~/.claude/skills/idea-breakdown
 ```
 
-```
-用 $idea-breakdown 拆解这个想法：音视频脚本辅助工具，帮创作者规划拍摄内容
-```
+安装后重启对应工具或开始新会话。
 
-Claude Code 里如果你习惯 slash-command 风格，也可以这样说：
+## 使用
 
-```
-/idea-breakdown 拼豆图纸生成器，把图片转成像素拼豆图案
-```
+完整拆解：
 
-```
-这个拼豆图纸生成器适合做成 skill 还是软件？帮我深度拆解。
+```text
+使用 $idea-breakdown 完整分析这个想法，判断应该做 Skill、Skill + 后端还是完整软件。
 ```
 
-Claude Code / Codex 会输出一份**结构化分析报告**，四个维度逐一拆解，最后附总结建议和下一步行动。
+单独审查产品：
 
----
-
-## 三、输出示例结构
-
-```
-## 一、Skill 可行性评估
-结论：✅ 纯 Skill 就够 / 🔀 Skill + 后端 / 🏗️ 必须做软件
-
-## 二、实现路径设计
-输入参数 / 输出格式 / 内部流程 / 需要哪些工具
-
-## 三、自用优化设计
-调用方式 / workflow 位置 / 和其他工具的组合 / 可自动化的部分
-
-## 四、商业化路径分析
-护城河 / 防复制方案 / 定价模式 / 目标用户 / 第一步从哪里开始
-
-## 总结建议
-一段话：怎么做 + 优先级 + 最快跑通的路径
+```text
+使用 $idea-breakdown 的 Product 模式挑战用户、痛点和 MVP 范围。
 ```
 
----
+单独审查工程：
 
-## 四、适合什么场景
+```text
+使用 $idea-breakdown 的 Engineering 模式检查架构、安全、失败路径和最小技术证明。
+```
 
-- 有一个新想法，不知道「做 Skill 还是做软件」
-- 想清楚一个 Skill 的商业化路径再动手
-- 快速评估一个想法的可行性，不想花太多时间分析
+单独审查设计：
 
----
+```text
+使用 $idea-breakdown 的 Design 模式拆解用户路径和所有界面状态，不要写代码。
+```
+
+## 输出
+
+Skill 会给出：
+
+1. 用户、价值和关键假设；
+2. 选定视角的审查结论；
+3. 实现路线及边界；
+4. 自用工作流和与现有工具的组合；
+5. 在 Full 或明确请求时的商业化分析；
+6. 最低风险的下一步及扩大投入所需证据。
 
 ## License
 
-[MIT](LICENSE) — 随便用、随便改、随便分发。
+[MIT](LICENSE)

@@ -1,4 +1,4 @@
 interface:
   display_name: "Idea Breakdown"
-  short_description: "Evaluate ideas as skills or products"
-  default_prompt: "Use $idea-breakdown to evaluate this product idea and recommend the fastest viable build path."
+  short_description: "Review ideas across product, engineering, design, and business"
+  default_prompt: "Use $idea-breakdown in full mode to evaluate this idea and recommend the lowest-risk build path."
